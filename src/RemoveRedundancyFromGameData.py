@@ -1,6 +1,6 @@
 import json
 
-game_data_raw = open('/Users/sam.curtis@ibm.com/Desktop/code/nba/Spacing Analysis/GameDataSample.json')
+game_data_raw = open('/Users/sam.curtis@ibm.com/Desktop/code/nba/NBA Player Tracking Analytics/Data/0021500001.json')
 game_data = json.load(game_data_raw)
 
 cleansed_game_data = {}
@@ -14,7 +14,7 @@ cleansed_game_data['events'] = []
 for event in game_data['events']:
     cleansed_game_data['events'].append({'eventId' : event['eventId'], 'moments' : event['moments']})
 
-cleansed_json = json.dumps(cleansed_game_data)
+cleansed_json = json.dumps(cleansed_game_data,separators=(',', ':'))
 fileName = cleansed_game_data['gamedate'] + '_' + cleansed_game_data['visitor']['abbreviation'] + '_' + cleansed_game_data['home']['abbreviation'] + '.json'
 
 f = open(fileName,'w')
